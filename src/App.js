@@ -20,8 +20,9 @@ function App() {
       .map((card) => ({ ...card, id: Math.random() }))////dar in ga yek id random be har card dadim
     setScore(0)
     setCards(shuffleCard)
-
+    console.log(shuffleCard);
   }
+ 
 
 
   const [choiseone, setChoiseone] = useState(null);
@@ -47,6 +48,7 @@ function App() {
       }
       else {
         console.log("notmatch");
+       setTimeout(()=> resetchois(),1000)
       }
 
     }
@@ -60,7 +62,7 @@ function App() {
     setScore((prevScore) => prevScore + 1);
   }
   return (
-    <div className="App mx-auto">
+    <div className="App">
 
       <div className="hedear">
         <h1 className="border border-4 p-4 text-white">Memory Game {"(:"}</h1>
@@ -68,8 +70,8 @@ function App() {
       </div>
 
       <div className="card-grid mx-3">
-        {cards.map(card => (
-          <Card card={card} handelchois={handelchois} />
+        {cards.map((card,index) => (
+          <Card card={card} handelchois={handelchois} flipped={card===choiseone||card===choisetow || card.matched} />
         ))}
 
       </div>

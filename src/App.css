@@ -40,7 +40,7 @@
 .card-grid{
   margin-top:1em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 1em;
   height: 200px;
 }
