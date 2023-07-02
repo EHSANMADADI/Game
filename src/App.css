@@ -44,3 +44,7 @@
   grid-gap: 1em;
   height: 200px;
 }
+
+.bg-d{
+  background-color: #282c34;
+}

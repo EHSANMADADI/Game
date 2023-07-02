@@ -67,6 +67,7 @@ function App() {
       <div className="hedear">
         <h1 className="border border-4 p-4 text-white">Memory Game {"(:"}</h1>
         <button className="btn btn-primary " onClick={shuffleCards}>New Game</button>
+        <h5 className='bg-d p-2 my-3 text-white'>Your number of attempts : {score}</h5>
       </div>
 
       <div className="card-grid mx-3">
@@ -75,6 +76,9 @@ function App() {
         ))}
 
       </div>
+      
+
+      
 
 
     </div>
