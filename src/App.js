@@ -32,16 +32,36 @@ function App() {
     choiseone?setChoisetow(card):setChoiseone(card);
   }
 
+  ///compare 2selected cards
+  useEffect(()=>{
+    if(choisetow&&choiseone){///مطمعن میشیم که دوتا عکس انتخاب شده باشد
+      if(choisetow.src===choiseone.src){
+        console.log("match");
+        resetchois();
+      }
+      else{
+        console.log("notmatch");
+      }
 
+    }
+  },
+  [choiseone,choisetow])
+
+  ////rset choises and incrise  score
+ const resetchois=()=>{
+  setChoiseone(null);
+  setChoisetow(null);
+  setScore((prevScore)=>prevScore+1);
+ }
   return (
-    <div className="App">
+    <div className="App mx-auto">
 
       <div className="hedear">
         <h1 className="border border-4 p-4 text-white">Memory Game {"(:"}</h1>
         <button className="btn btn-primary " onClick={shuffleCards}>New Game</button>
       </div>
 
-      <div className="card-grid">
+      <div className="card-grid mx-3">
        {cards.map(card=>( 
        <Card card={card} handelchois={handelchois}  />
        ))}

@@ -1,8 +1,10 @@
-.Card{
+.Card {
      position: relative;
 }
-.Card img{
-display: block;
-border: 4px solid #fff;
-border-radius:6px;
+
+.Card img {
+     width: 100%;
+     display: block;
+     border: 4px solid #fff;
+     border-radius: 6px;
 }

@@ -8,8 +8,8 @@ export default function Card(props) {
     <div>
       <div key={props.card.id} className="Card">
           <div>
-          <img src={props.card.src} className="w-75"/>
-          <img src='./img/cover.jpg' className="w-75" onClick={handelClick}/>
+          <img src={props.card.src} />
+          <img src='./img/cover.jpg' onClick={handelClick}/>
           </div>
         </div>
     </div>
