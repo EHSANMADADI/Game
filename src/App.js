@@ -3,12 +3,12 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Card from './component/Card';
 const cardImages = [
-  { "src": "/img/i-1.jpg" },
-  { "src": "/img/i-2.jpg" },
-  { "src": "/img/i-3.jpg" },
-  { "src": "/img/i-4.jpg" },
-  { "src": "/img/i-5.jpg" },
-  { "src": "/img/i-6.jpg" }
+  { "src": "/img/i-2.jpg", "matched": false },
+  { "src": "/img/i-3.jpg", "matched": false },
+  { "src": "/img/i-1.jpg", "matched": false },
+  { "src": "/img/i-4.jpg", "matched": false },
+  { "src": "/img/i-5.jpg", "matched": false },
+  { "src": "/img/i-6.jpg", "matched": false }
 ]
 
 function App() {
@@ -24,35 +24,41 @@ function App() {
   }
 
 
-  const[choiseone,setChoiseone]=useState(null);
-  const[choisetow,setChoisetow]=useState(null);
+  const [choiseone, setChoiseone] = useState(null);
+  const [choisetow, setChoisetow] = useState(null);
 
   ///handel choise
-  const handelchois=(card)=>{
-    choiseone?setChoisetow(card):setChoiseone(card);
+  const handelchois = (card) => {
+    choiseone ? setChoisetow(card) : setChoiseone(card);
   }
 
   ///compare 2selected cards
-  useEffect(()=>{
-    if(choisetow&&choiseone){///مطمعن میشیم که دوتا عکس انتخاب شده باشد
-      if(choisetow.src===choiseone.src){
-        console.log("match");
+  useEffect(() => {
+    if (choisetow && choiseone) {///مطمعن میشیم که دوتا عکس انتخاب شده باشد
+      if (choisetow.src === choiseone.src) {
+        setCards(prevCard => prevCard.map((card) => {
+          if (card.src === choisetow.src) {
+            return { ...card, matched: true }//تغییر یکی از عناصر آبجکت
+          }
+          else
+            return card
+        }))
         resetchois();
       }
-      else{
+      else {
         console.log("notmatch");
       }
 
     }
   },
-  [choiseone,choisetow])
+    [choiseone, choisetow])
 
   ////rset choises and incrise  score
- const resetchois=()=>{
-  setChoiseone(null);
-  setChoisetow(null);
-  setScore((prevScore)=>prevScore+1);
- }
+  const resetchois = () => {
+    setChoiseone(null);
+    setChoisetow(null);
+    setScore((prevScore) => prevScore + 1);
+  }
   return (
     <div className="App mx-auto">
 
@@ -62,9 +68,9 @@ function App() {
       </div>
 
       <div className="card-grid mx-3">
-       {cards.map(card=>( 
-       <Card card={card} handelchois={handelchois}  />
-       ))}
+        {cards.map(card => (
+          <Card card={card} handelchois={handelchois} />
+        ))}
 
       </div>
 
