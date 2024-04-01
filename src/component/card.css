@@ -1,0 +1,31 @@
+.Card {
+     position: relative;
+}
+
+.Card img {
+     width: 100%;
+     display: block;
+     border: 4px solid #fff;
+     border-radius: 6px;
+}
+/* {درحال عادی عکس زیری نمایش داده نشود */
+.Card .front{
+     transform: rotateY(90deg);
+     position: absolute;
+     transition:all ease-in 0.2s;
+}
+
+.flipped .front{
+     /*  اگر کلاس فیلیپد داشت نشونئ بده عکس زیری رو  */
+     transform:rotateY(0deg);
+     transition-delay:  0.2s;
+}
+.Card .back{
+    transition: all ease-in 0.2;
+     transition-delay:  0.2s;
+} 
+
+.flipped .back{
+     transform:rotateY(90deg);
+     transition-delay:  0;
+} 
